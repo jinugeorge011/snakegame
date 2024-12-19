@@ -1,0 +1,162 @@
+/* General styling for App */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 720px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  perspective: 1000px; /* Adding 3D perspective */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.App .theme-switch {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px dotted black;
+  background-color: #c4b700;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: monospace;
+}
+
+button:hover {
+  background-color: #8b7b00;
+}
+
+/* Light Mode */
+.App.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.App.light .cell {
+  background-color: #f0f0f0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.App.light .snake {
+  background-color: #4caf50;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for snake */
+  transform: scale(1.1);
+}
+
+.App.light .food {
+  background-color: #ff5722;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out; /* Smooth transition for food */
+  transform: scale(1.2);
+}
+
+/* Dark Mode */
+.App.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.App.dark .cell {
+  background-color: #333333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.App.dark .snake {
+  background-color: #81c784;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for snake */
+  transform: scale(1.1);
+}
+
+.App.dark .food {
+  background-color: #e57373;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out; /* Smooth transition for food */
+  transform: scale(1.2);
+}
+
+/* 3D Game Board and Cell Responsiveness */
+.board {
+  display: grid;
+  gap: 2px;
+  width: 80vmin;
+  height: 80vmin;
+  max-width: 600px;
+  max-height: 600px;
+  transform-style: preserve-3d; /* Enable 3D transformations */
+  transform: rotateX(10deg); /* Apply 3D rotation */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for the board */
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  transform: rotateY(0deg) translateZ(30px); /* Apply 3D transformation for depth */
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input{
+  border-radius: 10px;
+  border: 2px dotted black;
+  width: 200px;
+  height: 35px;
+}
+
+.cell.snake {
+  background-color: #4caf50;
+  transform: scale(1.1) rotateY(15deg) translateZ(15px);
+  transition: transform 0.2s ease-in-out; /* Smooth transition for snake */
+}
+
+.cell.food {
+  background-color: #ff5722;
+  transform: scale(1.2) rotateY(15deg) translateZ(20px);
+  transition: transform 0.2s ease-in-out; /* Smooth transition for food */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+
+  .board {
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 400px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 5px;
+  }
+
+  .board {
+    width: 95vmin;
+    height: 95vmin;
+    max-width: 350px;
+    max-height: 350px;
+  }
+
+  button {
+    padding: 8px;
+  }
+
+  input {
+    padding: 8px;
+  }
+}
